@@ -3,5 +3,12 @@
   "main": "index.js",
   "scripts": {
     "start": "electron index.js"
+  },
+  "dependencies": {
+    "electron": "^8.0.1",
+    "keytar": "^5.2.0"
+  },
+  "devDependencies": {
+    "electron-rebuild": "^1.10.0"
   }
 }
