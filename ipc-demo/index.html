@@ -10,17 +10,20 @@
 <body>
 
   <button id="sendMsgMain">Send IPC message to main</button>
-  <button id="openDialog">Use remote</button>
+  <button id="openDialog">Use remote to open a dialog</button>
 
   <hr />
 
   <button id="doBlockingWork">Do lots of blocking work</button>
+  <button id="doBlockingWorkViaWebSocket">Do lots of blocking work via web worker thread</button>
   <button id="doNonBlockingWork">Do lots of non-blocking work with electron-remote</button>
 
+  <button id="openNewBrowserWindow">Open a new browser window (github.com) using 'remote'</button>
 
-  <script>
-    require('./renderer.js');
-  </script>
+  <hr/>
+
+  <div id="fromWebSocket">Placeholder for data from web socket server</div>
+  <script src='./renderer.js'></script>
 
 </body>
 </html>

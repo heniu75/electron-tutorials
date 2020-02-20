@@ -9,7 +9,7 @@ function doWork() {
 
   // `work` will get executed concurrently in separate background processes
   // and resolve with a promise
-  _.times(25, () => {
+  _.times(5, () => {
     work().then(result => {
       console.log(`work done in ${result} ms`);
     });

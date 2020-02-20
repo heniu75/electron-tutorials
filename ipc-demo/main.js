@@ -1,4 +1,5 @@
 const { app, BrowserWindow, ipcMain } = require('electron');
+const { uuid } = require('uuid');
 const path = require('path');
 const { showDialog } = require('./show-dialog');
 let mainWindow;
@@ -8,14 +9,14 @@ app.on('ready', () => {
   let mainWindow = new BrowserWindow({
     height: 1400,
     width: 1000,
-    title: 'Renderer Process'
+    title: 'Renderer Process',
+    webPreferences: {
+      nodeIntegration: true,
+      nodeIntegrationInWorker: true }
   });
 
   mainWindow.loadURL('file://' + path.join(__dirname, 'index.html'));
-  mainWindow.openDevTools({mode: 'bottom'});
-
-
-
+  // mainWindow.openDevTools({mode: 'bottom'});
 
   ipcMain.on('sendMainMessage', (event, props) => {
     showDialog(props.greeting);
@@ -24,11 +25,8 @@ app.on('ready', () => {
     mainWindow.webContents.send('sendRendererMessage', { result: true });
   });
 
-
-
   ipcMain.on('doBlockingWork', () => {
     const work = require('./work');
     work();
   });
-
 });
