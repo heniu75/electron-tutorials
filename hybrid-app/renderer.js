@@ -3,7 +3,12 @@ const $webview = document.querySelector('webview');
 const $loader = document.querySelector('.loader');
 let isInitialLoad = true;
 
+console.log('in renderer.js');
+console.log('$webview', $webview);
+console.log('$loader', $loader);
+
 $webview.addEventListener('did-start-loading', () => {
+  console.log('webview did start loading');
   // we use client side rendering so the loader is only needed on the first page load
   if(isInitialLoad) {
     $webview.classList.add('hide');
@@ -13,6 +18,7 @@ $webview.addEventListener('did-start-loading', () => {
 });
 
 $webview.addEventListener('dom-ready', () => {
+  console.log('hiding loader...');
   $webview.classList.remove('hide');
   // have to delay in order for the webview show/resize to settle
   setTimeout(() => {

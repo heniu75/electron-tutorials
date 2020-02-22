@@ -6,7 +6,11 @@ let webviewId;
 app.on('ready', () => {
   mainWindow = new BrowserWindow({
     titleBarStyle: 'hidden-inset',
-    frame: false
+    frame: false,
+    webPreferences: {
+      nodeIntegration: true,
+      webviewTag: true
+    }
   });
   mainWindow.loadURL(path.join('file://', __dirname, 'index.html'));
   mainWindow.openDevTools({ mode: 'bottom' });
